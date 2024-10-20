@@ -1,0 +1,25 @@
+# TEST GET request
+
+# GET http://localhost:8000/api/v1/cars/test
+# Content-Type: application/json
+
+# TEST POST request
+# Send a POST request with a JSON body and a file POST /api/v1/cars/test HTTP/1.1
+POST /api/v1/cars/test HTTP/1.1
+Content-Type: multipart/form-data; boundary=---011000010111000001101001
+User-Agent: insomnia/10.1.0
+Host: localhost:8000
+Content-Length: 263
+
+-----011000010111000001101001
+Content-Disposition: form-data; name="test"
+
+heytherethisistest
+
+-----011000010111000001101001
+
+Content-Disposition: form-data; name="file"; filename="file.txt"
+Content-Type: text/plain
+
+
+-----011000010111000001101001--
