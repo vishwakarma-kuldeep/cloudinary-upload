@@ -7,6 +7,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 
 const createCar = asyncHandler(async (req, res) => {
   try {
+    console.log(req.body)
     const owner = JSON.parse(req.body.owner);
     const {
       title,
@@ -46,18 +47,15 @@ const createCar = asyncHandler(async (req, res) => {
     // let file
 
     if (uploadedPhotos.length > 0) {
-   uploadedPhotos.map(async(file) =>{
-       let locations =   await cloudinary.uploadOnCloudinary(file, "image")
-       
-       console.log(locations)
-    }
-      );
-    //   console.log(photoPromises);
-    //   const photoUrls = await Promise.all(photoPromises);
-    //   console.log(photoUrls);
-    //   photoUrls.forEach((url) => validPhotos.push({ url }));
-    }
+        for(let file = 0 ; file< uploadedPhotos.length; file++){
+            const url = await cloudinary.uploadOnCloudinary(uploadedPhotos[file], "image");
+   
+            validPhotos.push( url );
+        }
 
+    }
+    console.log(validPhotos)
+console.log(validPhotos)
     // if (uploadedVideos.length > 0) {
     //   const videoPromises = uploadedVideos.map((file) =>
     //     uploadToCloudinary(file, "video")
